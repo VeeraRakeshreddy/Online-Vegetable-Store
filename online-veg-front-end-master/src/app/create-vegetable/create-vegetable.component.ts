@@ -34,6 +34,7 @@ export class CreateVegetableComponent implements OnInit {
     onSubmit(){
       console.log(this.vegetable);
       this.saveVegetable();
+      this.router.navigate(['/vegetables']);
     }
   }
 

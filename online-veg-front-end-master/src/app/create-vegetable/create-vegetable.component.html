@@ -1,22 +1,49 @@
 <div class="col-md-6 offset-md-3">
     <!--<h3> Create Vegetable </h3>-->
-    <form (ngSubmit) = "onSubmit()">
+    <form #userForm = "ngForm"(ngSubmit) = "onSubmit()">
     
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label style="  font-family: Arial, Helvetica, sans-serif; font-size: 25px;">  Id</label>
             <input type="number" class ="form-control" id = "VegetableId"
                 [(ngModel)] = "vegetable.vegId" name = "vegetableId">
-        </div>
+        </div>  -->
     
         <div class="form-group">
             <label style="  font-family: Arial, Helvetica, sans-serif; font-size: 25px;">  Name</label>
-            <input type="text" class ="form-control" id = "VegetableName"
+            <input type="text" class ="form-control" id = "VegetableName"  required pattern="[a-zA-Z][a-zA-Z]+" #veg="ngModel"
                 [(ngModel)] = "vegetable.vegName" name = "vegetableName">
+
+                <div *ngIf="veg.invalid && (veg.dirty || veg.touched)" class="myerror">
+                    <div *ngIf="veg.invalid == true">
+                        <div *ngIf="veg.errors.required">
+                           <h6 style="color: red;">  Name is required.</h6>
+                        </div>
+                        <div *ngIf="veg.errors.pattern">
+                            <h6 style="color: red;"> Not a valid Name.</h6>
+                        </div>
+
+                    </div>
+
+                </div>
+
         </div>
         <div class="form-group">
             <label style="  font-family: Arial, Helvetica, sans-serif; font-size: 25px;">  Cost</label>
-            <input type="text" class ="form-control" id = "VegetableCost"
+            <input type="text" class ="form-control" id = "VegetableCost"  required pattern="[0-9][0-9]+" #vegcost="ngModel"
                 [(ngModel)] = "vegetable.vegCost" name = "vegetableCost">
+
+                <div *ngIf="vegcost.invalid && (vegcost.dirty || vegcost.touched)" class="myerror">
+                    <div *ngIf="vegcost.invalid == true">
+                        <div *ngIf="vegcost.errors.required">
+                           <h6 style="color: red;">  cost required.</h6>
+                        </div>
+                        <div *ngIf="vegcost.errors.pattern">
+                            <h6 style="color: red;"> Not a valid Cost.</h6>
+                        </div>
+
+                    </div>
+
+                </div>
         </div>
     
         <div class="form-group">
@@ -27,18 +54,45 @@
 
         <div class="form-group">
             <label style="  font-family: Arial, Helvetica, sans-serif; font-size: 25px;"> Discount Type</label>
-            <input type="text" class ="form-control" id = "DiscountType"
+            <input type="text" class ="form-control" id = "DiscountType" required pattern="[a-z0-9][a-z0-9]+" #vegdis="ngModel"
                 [(ngModel)] = "vegetable.discountType" name = "discountType">
+
+                <div *ngIf="vegdis.invalid && (vegdis.dirty || vegdis.touched)" class="myerror">
+                    <div *ngIf="vegdis.invalid == true">
+                        <div *ngIf="vegdis.errors.required">
+                           <h6 style="color: red;">  Discount required.</h6>
+                        </div>
+                        <div *ngIf="vegdis.errors.pattern">
+                            <h6 style="color: red;"> Not a valid Discount.</h6>
+                        </div>
+
+                    </div>
+
+                </div>
         </div>
 
         <div class="form-group">
             <label style="  font-family: Arial, Helvetica, sans-serif; font-size: 25px;"> Discount </label>
-            <input type="text" class ="form-control" id = "Discount"
+            <input type="text" class ="form-control" id = "Discount" required pattern="[0-9][0-9]+" #dis="ngModel"
                 [(ngModel)] = "vegetable.discount" name = "discount">
+                
+                <div *ngIf="dis.invalid && (dis.dirty || dis.touched)" class="myerror">
+                    <div *ngIf="dis.invalid == true">
+                        <div *ngIf="dis.errors.required">
+                           <h6 style="color: red;">  Discount required.</h6>
+                        </div>
+                        <div *ngIf="dis.errors.pattern">
+                            <h6 style="color: red;"> Not a valid Discount.</h6>
+                        </div>
+
+                    </div>
+
+                </div>
+
         </div><br>
        
     
-        <button class = "btn btn-success" type ="submit">Submit</button>
+        <button class = "btn btn-success" [disabled]="userForm.invalid" type ="submit">Submit</button>
     
     </form>
     </div>

@@ -1,26 +1,66 @@
 <div class="col-md-6 offset-md-3">
     <!--<h3 style="color:rgba(69, 7, 162, 0.959);"> Create Customer </h3><br>-->
-    <form (ngSubmit) = "onSubmit()"><br>
+    <form  (ngSubmit) = "onSubmit()"><br>
     
         <div class="form-group">
             <label style="  font-family: Arial, Helvetica, sans-serif; font-size: 25px;"> First Name</label>
-            <input type="text" class ="form-control" id = "firstName"
+            <input type="text" class ="form-control" id = "firstName" required pattern="[a-zA-Z][a-zA-Z]+" #name="ngModel"
                 [(ngModel)] = "customer.firstName" name = "firstName">
+                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="myerror">
+                    <div *ngIf="name.invalid == true">
+                        <div *ngIf="name.errors.required">
+                           <h6 style="color: red;"> First Name is required.</h6>
+                        </div>
+                        <div *ngIf="name.errors.pattern">
+                            <h6 style="color: red;"> Not a valid Name.</h6>
+                        </div>
+
+                    </div>
+
+                </div>
         </div><br>
     
         <div class="form-group">
             <label style="  font-family: Arial, Helvetica, sans-serif; font-size: 25px;"> Last Name</label>
-            <input type="text" class ="form-control" id = "lastName"
+            <input type="text" class ="form-control" id = "lastName" required pattern="[a-zA-Z][a-zA-Z]+" #names="ngModel"
                 [(ngModel)] = "customer.lastName" name = "lastName">
+
+                <div *ngIf="names.invalid && (names.dirty || names.touched)" class="myerror">
+                    <div *ngIf="names.invalid == true">
+                        <div *ngIf="names.errors.required">
+                           <h6 style="color: red;"> Last Name is required.</h6>
+                        </div>
+                        <div *ngIf="names.errors.pattern">
+                            <h6 style="color: red;"> Not a valid Name.</h6>
+                        </div>
+
+                    </div>
+
+                </div>
         </div><br>
     
         <div class="form-group">
             <label style="  font-family: Arial, Helvetica, sans-serif; font-size: 25px;">Email Id</label>
-            <input type="text" class ="form-control" id = "emailId"
+            <input type="text" class ="form-control" id = "emailId" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+ " #mail="ngModel"
                 [(ngModel)] = "customer.emailId" name = "emailId">
+
+                <div *ngIf="mail.invalid && (names.dirty || mail.touched)" class="myerror">
+                    <div *ngIf="mail.invalid == true">
+                        <div *ngIf="mail.errors.required">
+                           <h6 style="color: red;"> Mail is required.</h6>
+                        </div>
+                         <!-- <div *ngIf="mail.errors.pattern">
+                            <h6 style="color: red;"> Must be valid email
+                                example@yourdomain.com</h6>
+                        </div>  -->
+
+                    </div>
+
+                </div>
+                
         </div><br>
     
-        <button class = "btn btn-success" type ="submit">Submit</button><br><br><br>
+        <button class = "btn btn-success"  type ="submit">Submit</button><br><br><br>
     
     </form>
     </div><br><br>

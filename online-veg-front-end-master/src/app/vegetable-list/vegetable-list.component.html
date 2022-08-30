@@ -1,6 +1,6 @@
 <!--<h2> Vegetables List</h2>-->
 <table class = "table table-striped">
-    <thead>
+    <thead style=font-size:larger;font-weight:400;color:firebrick;>
         <tr>
             <th> Vegetable Id</th>
             <th> Vegetable Name </th>
@@ -12,7 +12,7 @@
             <th> Actions </th>
         </tr>
     </thead>
-    <tbody>
+    <tbody style="font-style: oblique; font-size: larger; font-family:Verdana, Geneva, Tahoma, sans-serif;">
         <tr *ngFor = "let vegetable of vegetables" >
             <td> {{ vegetable.vegId }} </td>
             <td> {{ vegetable.vegName }} </td>

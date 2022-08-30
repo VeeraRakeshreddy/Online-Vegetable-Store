@@ -16,20 +16,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.abc.onlinevegetablestore.dto.LoginResponseDTO;
 import com.abc.onlinevegetablestore.exception.ResourceNotFoundException;
 import com.abc.onlinevegetablestore.model.Customer;
-import com.abc.onlinevegetablestore.model.LoginResponse;
+
 import com.abc.onlinevegetablestore.repository.CustomerRepository;
-import com.abc.onlinevegetablestore.repository.LoginRepository;
+
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RestController
 	@RequestMapping("/api/v1")
 	public class CustomerController {
-		@Autowired
-		private LoginRepository loginRepository;
-			
+					
 		
 
 		@Autowired
@@ -80,19 +77,6 @@ import com.abc.onlinevegetablestore.repository.LoginRepository;
 			Map<String, Boolean> response = new HashMap<>();
 			response.put("deleted", Boolean.TRUE);
 			return ResponseEntity.ok(response);
-		}
-		@GetMapping("/login")
-		public LoginResponseDTO validateUser(@PathVariable String username, @PathVariable String password){
-			LoginResponse response = loginRepository.findByUsername(username);
-			response.getPassword();
-			LoginResponseDTO resp = new LoginResponseDTO();
-			if(password.equals(response.getPassword())){
-				resp.setStatus("true");
-			}
-		else {
-			resp.setStatus("false");
-		}	
-			return resp;
 		}
 		
 		

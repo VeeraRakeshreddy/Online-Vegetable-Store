@@ -34,6 +34,7 @@ export class CreateCustomerComponent implements OnInit {
       console.log(this.customer);
       this.saveCustomer();
     }
+    
   }
 
   

@@ -13,6 +13,7 @@ import { VegetableDetailsComponent } from './vegetable-details/vegetable-details
 import { VegetableListComponent } from './vegetable-list/vegetable-list.component';
 import { UpdateVegetableComponent } from './update-vegetable/update-vegetable.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { UpdateVegetableComponent } from './update-vegetable/update-vegetable.co
     CreateVegetableComponent,
     VegetableDetailsComponent,
     VegetableListComponent,
-    UpdateVegetableComponent
+    UpdateVegetableComponent,
+  
   ],
   imports: [
     BrowserModule,
